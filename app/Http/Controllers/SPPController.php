@@ -20,7 +20,8 @@ class SPPController extends Controller
             $bulanSPP[$i] = ($data === null) ? 'bg-light' : 'table-light';
         }
         $buildingCost = DB::table('uangBangunan')->where('id_siswa', Auth::user()->id)->orderBy('created_at', 'desc')->limit(1)->get();
+        $uangBangunan = 9000000;
 
-        return view('home',  compact('years', 'paraTahun', 'bulanArray', 'bulanSPP', 'buildingCost'));
+        return view('home',  compact('years', 'paraTahun', 'bulanArray', 'bulanSPP', 'buildingCost', 'uangBangunan'));
     }
 }
