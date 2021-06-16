@@ -8,7 +8,7 @@
 				<div class="card-header">{{ __('Entri Pembayaran') }}</div>
 				<div class="card-body">
 					<form method="post" action="/uangBangunan/bayar/">
-	                    {{ csrf_field() }}
+	                    @csrf
 	                    <div class="form-group">
 	                        <label>ID Siswa</label>
 	                        <input type="text" class="form-control" name="id_siswa" placeholder="Masukkan ID Siswa...">
