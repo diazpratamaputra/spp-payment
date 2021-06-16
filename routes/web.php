@@ -33,3 +33,4 @@ Route::post('/spp/bayar/{paraTahun}', 'App\Http\Controllers\HomeController@spppa
 
 Route::get('/uangBangunan/bayar', 'App\Http\Controllers\HomeController@uangBangunanpayment');
 
+Route::post('/uangBangunan/bayar', 'App\Http\Controllers\HomeController@uangBangunanpayment');
