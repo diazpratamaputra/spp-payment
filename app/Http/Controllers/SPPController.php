@@ -10,6 +10,8 @@ class SPPController extends Controller
 {
 
     public function thn($tahun){
+        $Output = "";
+        $totalSudahDibayar = 0;
         $years = DB::table('spp')->where('id_siswa', Auth::user()->id)->where("tahun", $tahun)->get();
         $paraTahun = $tahun;
         $bulanArray = [];
@@ -19,9 +21,17 @@ class SPPController extends Controller
             $bulanArray[$i] = ($data === null) ? 'Belum lunas' : 'Lunas';
             $bulanSPP[$i] = ($data === null) ? 'bg-light' : 'table-light';
         }
-        $buildingCost = DB::table('uangBangunan')->where('id_siswa', Auth::user()->id)->orderBy('created_at', 'desc')->limit(1)->get();
+        $buildingCost = DB::table('uangBangunan')->where('id_siswa', Auth::user()->id)->latest()->limit(1)->get();
         $uangBangunan = 9000000;
-
-        return view('home',  compact('years', 'paraTahun', 'bulanArray', 'bulanSPP', 'buildingCost', 'uangBangunan'));
+        if ($buildingCost == null) {
+            $totalSudahDibayar = 0;
+            $Output = $uangBangunan;
+        } else {
+            foreach ($buildingCost as $key) {
+                $totalSudahDibayar = $key->total;
+                $Output = $key->sisa;
+            }
+        }
+        return view('home',  compact('years', 'paraTahun', 'bulanArray', 'bulanSPP', 'buildingCost', 'uangBangunan', 'Output', 'totalSudahDibayar'));
     }
 }
