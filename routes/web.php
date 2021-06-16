@@ -31,5 +31,5 @@ Route::get('/uangBangunan/histori', 'App\Http\Controllers\HomeController@histori
 
 Route::post('/spp/bayar/{paraTahun}', 'App\Http\Controllers\HomeController@spppayment');
 
-Route::post('/uangBangunan/bayar', 'App\Http\Controllers\HomeController@uangBangunanpayment');
+Route::get('/uangBangunan/bayar', 'App\Http\Controllers\HomeController@uangBangunanpayment');
 
