@@ -7,7 +7,7 @@
 			<div class="card">
 				<div class="card-header">{{ __('Entri Pembayaran') }}</div>
 				<div class="card-body">
-					<form method="POST" action="/uangBangunan/bayar/">
+					<form method="POST" action="/uangBangunan/bayar">
 	                    @csrf
 	                    <div class="form-group">
 	                        <label>ID Siswa</label>
